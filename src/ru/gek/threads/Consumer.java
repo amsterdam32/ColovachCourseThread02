@@ -12,7 +12,12 @@ public class Consumer implements Runnable {
     @Override
     public void run() {
         while (true) {
-            Integer elem = buffer.get();
+            Integer elem = null;
+            try {
+                elem = buffer.get();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             System.out.println(elem + " consumed");
 
         }
